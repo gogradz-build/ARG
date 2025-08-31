@@ -121,6 +121,7 @@ const deleteProduct = () => {
         axios.post(route(props.delete_route_name), formData)
             .then((response) => {
                 fetchProducts();
+                console.log("Response" , response);
                 toast.success(response.data.message);
             }).catch((error => {
                 toast.error(error);

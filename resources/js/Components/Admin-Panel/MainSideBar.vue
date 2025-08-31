@@ -32,6 +32,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a :href="route('shop.index')" class="nav-link">
+                            <p>
+                               Shop
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <svg xmlns="http://www.w3.org/2000/svg" class="mr-2" width="25" height="25"
                                 viewBox="0 0 32 32">
