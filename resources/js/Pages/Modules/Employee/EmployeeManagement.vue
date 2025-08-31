@@ -8,6 +8,7 @@ const employee_table_columns = [
     { field: 'id', title: 'ID', isUnique: true },
     { field: 'first_name', title: 'First Name' },
     { field: 'last_name', title: 'Last Name' },
+    { field: 'position', title: 'Position' },
     { field: 'nic', title: 'NIC' },
     { field: 'contact_number', title: 'Contact Number' },
     { field: 'address', title: 'Address' },

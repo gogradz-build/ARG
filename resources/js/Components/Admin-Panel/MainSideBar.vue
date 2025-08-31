@@ -25,9 +25,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a :href="route('region.index')" class="nav-link">
+                        <a :href="route('employee.index')" class="nav-link">
                             <p>
-                               Peoples
+                               Employee
                             </p>
                         </a>
                     </li>

@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 trait ApiCrudTrait
 {
-    public function all(Request $request)
+    public function dataTable(Request $request)
     {
          $query = $this->model->newQuery();
 

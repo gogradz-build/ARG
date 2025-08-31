@@ -1,10 +1,10 @@
-
 <script setup>
 import AdminLayout from '@/Layouts/Admin/AdminLayout.vue';
 import { Head } from "@inertiajs/vue3";
 import { ref } from 'vue';
 import { useToast } from 'vue-toastification'
 import { store } from '../../../main';
+import DataTable from '@/Components/Admin/DataTable.vue';
 
 const toast = useToast();
 const employee_first_name = ref('');
@@ -13,7 +13,26 @@ const employee_nic = ref('');
 const employee_contact_number = ref('');
 const employee_address = ref('');
 const employee_email = ref('');
+const role_name = ref('');
+const employee_position = ref('');
 const formRef = ref(null);
+
+const props = defineProps({
+    roles: Array,
+});
+
+const employee_table_columns = [
+    { field: 'id', title: 'ID', isUnique: true },
+    { field: 'first_name', title: 'First Name' },
+    { field: 'last_name', title: 'Last Name' },
+    { field: 'nic', title: 'NIC' },
+    { field: 'contact_number', title: 'Contact Number' },
+    { field: 'address', title: 'Address' },
+    { field: 'email', title: 'Email' },
+    { field: 'position', title: 'Position' },
+    { field: 'roll', title: 'roll' },
+    { field: 'actions', title: 'Actions', cellRenderer: false, width: '50px' },
+];
 
 async function handleSubmit() {
     const form = formRef.value;
@@ -23,15 +42,17 @@ async function handleSubmit() {
         return;
     }
     const formData = new FormData();
-    
-    formData.append('employee_first_name', employee_first_name.value);
-    formData.append('employee_last_name', employee_last_name);
-    formData.append('employee_nic', employee_nic);
-    formData.append('employee_contact_number', employee_contact_number);
-    formData.append('employee_address', employee_address);
-    formData.append('employee_email', employee_email);
 
-    store('#', formData);
+    formData.append('first_name', employee_first_name.value);
+    formData.append('last_name', employee_last_name.value);
+    formData.append('nic', employee_nic.value);
+    formData.append('contact_number', employee_contact_number.value);
+    formData.append('address', employee_address.value);
+    formData.append('email', employee_email.value);
+    formData.append('position', employee_position.value);
+    formData.append('roll_name', role_name.value);
+
+    store('employee.store', formData);
 }
 
 </script>
@@ -86,18 +107,32 @@ async function handleSubmit() {
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="employee_contact_number">Contact number</label>
-                                            <input type="number" class="form-control" id="employee_contact_number" required
-                                                placeholder="Contact Number" v-model="employee_contact_number">
+                                            <input type="number" class="form-control" id="employee_contact_number"
+                                                required placeholder="Contact Number" v-model="employee_contact_number">
                                         </div>
                                         <div class="col-md-6 mb-3">
-                                            <label for="employee_contact_number">NIC</label>
+                                            <label for="employee_contact_number">Address</label>
                                             <input type="text" class="form-control" id="employee_address" required
                                                 placeholder="Address" v-model="employee_address">
                                         </div>
-                                         <div class="col-md-6 mb-3">
+                                        <div class="col-md-6 mb-3">
                                             <label for="employee_email">Email</label>
                                             <input type="email" class="form-control" id="employee_address" required
                                                 placeholder="Email address" v-model="employee_email">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="position">Position</label>
+                                            <input type="text" class="form-control" id="position" required
+                                                placeholder="Position" v-model="employee_position">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="roll">Roll</label>
+                                            <select id="role" v-model="role_name" class="form-control"  required>
+                                                <option value="" selected>Select Roll</option>
+                                                <option v-for="role in props.roles" :key="role.id" :value="role.name">
+                                                    {{ role.name }}
+                                                </option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -107,6 +142,25 @@ async function handleSubmit() {
                                     </div>
 
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- DataTable Row -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card card-default">
+                            <div class="card-body" style="padding: 0px;">
+                                <DataTable
+                                    title="Employee TABLE"
+                                    fetch_url="/admin/employee/data-table"
+                                    :columns="employee_table_columns"
+                                    table_icon='<i class="nav-icon fas fa-archive" style="font-size: medium;"></i>'
+                                    modal_title="Employee"
+                                    edit_route_name = 'employee.edit'
+                                    delete_route_name= 'employee.delete'
+                                    view_button = false
+                                />
                             </div>
                         </div>
                     </div>

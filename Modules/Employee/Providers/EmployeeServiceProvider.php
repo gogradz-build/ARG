@@ -4,6 +4,8 @@ namespace Modules\Employee\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Employee\Providers\RepositoryServiceProvider as ProvidersRepositoryServiceProvider;
+
 
 class EmployeeServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,7 @@ class EmployeeServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+         $this->app->register(ProvidersRepositoryServiceProvider::class);
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Modules\Employee\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,10 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/employee', function (Request $request) {
     return $request->user();
+});
+
+Route::middleware(['web','auth'])->prefix('admin/employee')->group(function() {
+    Route::post('/store',[EmployeeController::class, 'store'])->name('employee.store');
+    Route::post('/update',[EmployeeController::class, 'update'])->name('employee.update');
+     Route::post('/delete',[EmployeeController::class, 'destroy'])->name('employee.delete');
 });

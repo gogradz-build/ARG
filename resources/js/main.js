@@ -15,7 +15,14 @@ export const store = (submit_route, form_data) => {
             }, 1500);
         })
         .catch((error) => {
-            toast.error("Error creating product", error);
+            if (error.response) {
+                const { message, errors } = error.response.data;
+                if (message) {
+                    toast.error(message);
+                }
+            } else {
+                toast.error("Something went wrong. Please try again.");
+            }
         });
 };
 
