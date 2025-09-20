@@ -24,8 +24,7 @@ class AdminController extends Controller
             $user = Auth::user();
             $roles = $user->getRoleNames();
 
-            
-            if ($roles->intersect(['Super Admin', 'Admin', 'staff'])->isNotEmpty()) {
+            if ($roles->intersect(['Super Admin', 'Admin', 'staff', 'Reff'])->isNotEmpty()) {
                 $token = $user->createToken('api-token')->plainTextToken;
                 return redirect()->to(route('admin.dashboard.login'));
             }

@@ -6,7 +6,7 @@ const toast = useToast();
 
 export const store = (submit_route, form_data) => {
     axios
-        .post(route(submit_route), form_data)
+        .post(route(submit_route), form_data, { headers: { 'Content-Type': 'multipart/form-data' } })
         .then((response) => {
             // toast.success("Product Successfully Created");
             toast.success(response.data.message);

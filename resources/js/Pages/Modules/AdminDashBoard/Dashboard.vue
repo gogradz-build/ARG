@@ -75,7 +75,7 @@ onMounted(() => {
 
     // Bar Chart
     const barCtx = barChartRef.value.getContext('2d');
-    const colorGradient = {startColor : '#00b09b',endColor : '#96c93d'};
+    const colorGradient = {startColor : '#E8175E',endColor : '#E8175E'};
       const gradientGreen = barCtx.createLinearGradient(0, 0, 0, 400);
       gradientGreen.addColorStop(0, colorGradient.startColor); // Color at the top (0%)
       gradientGreen.addColorStop(1, colorGradient.endColor);
@@ -86,7 +86,7 @@ onMounted(() => {
         datasets: [{
           label: 'Bar Chart Dataset',
           data: [10, 20, 15, 25, 30],
-          backgroundColor: "#7B920A",
+          backgroundColor: "#E8175E",
         //   borderColor: 'rgba(75, 192, 192, 1)',
           borderWidth: 1
         }]
@@ -151,8 +151,8 @@ onMounted(() => {
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-success rate-color">
                             <div class="inner">
-                                <h3>53<sup style="font-size: 20px">%</sup></h3>
-                                <p>Bounce Rate</p>
+                                <h3>100<sup style="font-size: 20px"></sup></h3>
+                                <p>Completed task</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>
@@ -165,7 +165,7 @@ onMounted(() => {
                         <div class="small-box bg-warning register-color">
                             <div class="inner">
                                 <h3>44</h3>
-                                <p>User Registrations</p>
+                                <p>Employees</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
@@ -178,7 +178,7 @@ onMounted(() => {
                         <div class="small-box bg-danger visitor-color">
                             <div class="inner">
                                 <h3>65</h3>
-                                <p>Unique Visitors</p>
+                                <p>Pending Task</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-pie-graph"></i>

@@ -23,5 +23,10 @@
     "ConsumerSample": true,
     "Peoples": true,
     "Shop": true,
-    "ReffTask": true
+    "ReffTask": true,
+    "Customers": true,
+    "Dealers": true,
+    "Orders": true,
+    "Task": true,
+    "Chat": true
 }

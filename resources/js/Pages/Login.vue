@@ -70,15 +70,15 @@ const handleLogin = () => {
 
     <div class="register-page" style="min-height: 542px;">
         <div class="register-box">
-            <div class="card card-outline card-primary">
+            <div class="card card-outline card-danger">
                 <div class="row">
                     <div class="col-12 p-3 d-flex justify-content-center align-items-center">
-                        <img src="/images/Admin-panel/panel-logo.png" alt="logo" class="" style="opacity: .8" width="50px"
+                        <img src="/images/Admin-panel/panel-logo.png" alt="logo" class="" style="opacity: .8" width="58%"
                         height="50px">
                     </div>
-                    <div class="col-12 text-center">
+                    <!-- <div class="col-12 text-center">
                         <span class="brand-text company-name">GOGRADZ</span>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="card-body">
                     <form @submit.prevent="handleLogin">
